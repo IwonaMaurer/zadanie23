@@ -1,0 +1,10 @@
+.value {
+  color: blue;
+}
+.delete {
+    border: 2px rgb(236, 215, 215) solid; 
+    position: absolute;
+    top: -35%;
+    left: 210px;
+    
+}
