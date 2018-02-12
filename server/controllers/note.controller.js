@@ -56,7 +56,7 @@ export function editNoteContent(req, res) {
     if(!note.id || !note.task) {
       res.status(403).end();
     }
-    Note.findOneAndUpdate({id: note.id}, note, {new: true}, (err, updated) => {
+    Note.findOneAndUpdate({id: req.params.noteId}, note, {new: true}, (err, updated) => {
       if(err) {
         res.status(500).send('error 500');
       }

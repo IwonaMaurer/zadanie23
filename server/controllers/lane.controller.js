@@ -49,7 +49,7 @@ export function editLaneName(req, res) {
    }
    // new: boolean if true method return modified document rather than original document.
    // lanes is updated and parsed with .json method.
-   Lane.findOneAndUpdate({id: lane.id}, lane, {new: true}, (err, updatedlane) => {
+   Lane.findOneAndUpdate({id: req.params.noteId}, lane, {new: true}, (err, updatedlane) => {
      if(err) {
        res.status(500).send(err);
      }
