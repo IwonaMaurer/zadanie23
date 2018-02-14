@@ -1,19 +1,19 @@
 import { Router } from 'express';
 import * as LaneController from '../controllers/lane.controller';
 
+
 const router = new Router();
 
-
-// Get all Lanes
+//Get all Lanes
 router.route('/lanes').get(LaneController.getLanes);
 
-// Add a new Lane
+//Add a new lane
 router.route('/lanes').post(LaneController.addLane);
 
-// Delete a lane by laneId
-router.route('/lanes/:laneId').delete(LaneController.deleteLane);
+//Edit a lane 
+router.route('/lane').put(LaneController.editLane);
 
-// Edit a lane name
-router.route('/lanesId').put(LaneController.editLaneName);
+//Delete a lane by laneId
+router.route('/lanes/:laneId').delete(LaneController.deleteLane);
 
 export default router;

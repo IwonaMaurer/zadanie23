@@ -17,7 +17,7 @@ if (typeof require.ensure !== 'function') {
 if (process.env.NODE_ENV !== 'production') {
   // Require async routes only in development for react-hot-reloader to work.
   require('./modules/Kanban/Kanban');
- }
+}
 
 // react-router setup with code-splitting
 // More info: http://blog.mxstbr.com/2016/01/react-apps-with-pages/
@@ -31,4 +31,4 @@ export default (
       }}
     />
   </Route>
- );
+);

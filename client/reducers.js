@@ -3,8 +3,6 @@
  */
 import { combineReducers } from 'redux';
 
-
-
 // Import Reducers
 import app from './modules/App/AppReducer';
 import intl from './modules/Intl/IntlReducer';

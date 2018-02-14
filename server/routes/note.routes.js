@@ -3,13 +3,13 @@ import * as NoteController from '../controllers/note.controller';
 
 const router = new Router();
 
-// Add a new Note
+//Add a new Note
 router.route('/notes').post(NoteController.addNote);
 
-// Delete a single note
-router.route('/notes/:noteId').delete(NoteController.deleteNote);
+//Edit a Note
+router.route('/note').put(NoteController.editNote);
 
-// Edit a note content by noteId
-router.route('/notesId').put(NoteController.editNoteContent);
+//Delete a note from line by noteId
+router.route('/notes/:noteId').delete(NoteController.deleteNoteFromLane); 
 
 export default router;
