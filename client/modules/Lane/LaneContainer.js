@@ -15,19 +15,19 @@ import { createNote, createNoteRequest } from '../Note/NoteActions';
 // wykorzystując tzw. wildcards (znak *), co przedstawia poniższy
 // kod:
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    laneNotes: ownProps.lane.notes.map(noteId => {
-      return { ...state.notes[noteId] }
-    })
-  };
-};
+const mapStateToProps = (state, ownProps) => ({
+  laneNotes: ownProps.lane.notes.map(noteId => state.notes[noteId])
+});
+
+
 
 const mapDispatchToProps = {
   ...laneActions,
   updateLane: updateLaneRequest,
   deleteLane: deleteLaneRequest,
+  editLane,
   addNote: createNoteRequest,
+  createLane: createLaneRequest,
   moveBetweenLanes,
   removeFromLane,
   changeLanesRequest,

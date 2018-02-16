@@ -35,13 +35,8 @@ class Kanban extends React.Component {
   }
 }
 
-Kanban.need = [() => { return fetchLanes(); }];
 
-Kanban.propTypes = {
-  lanes: PropTypes.array,
-  createLane: PropTypes.func,
-  dispatch: PropTypes.func
-};
+
 
 const mapStateToProps = (state) => ({
   lanes: Object.values(state.lanes),
@@ -51,6 +46,8 @@ const mapDispatchToProps = {
   createLane: createLaneRequest,
   fetchLanes: fetchLanes,
 };
+
+Kanban.need = [() => { return fetchLanes(); }];
 
 Kanban.propTypes = {
   lanes: PropTypes.array,

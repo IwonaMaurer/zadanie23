@@ -25,6 +25,12 @@ export default function lanes(state = initialState, action) {
      return { ...state, [action.laneId]: newLane };
    }
 
+
+   case DELETE_LANE: {
+    return omit(state, action.laneId);
+  }
+
+  
    case CREATE_NOTE: {
      const newLane = { ...state[action.laneId] };
      newLane.notes = newLane.notes.concat(action.note.id);
@@ -32,9 +38,14 @@ export default function lanes(state = initialState, action) {
      return { ...state, [action.laneId]: newLane };
    }
 
-   case DELETE_LANE: {
-     return omit(state, action.laneId);
-   }
+   case DELETE_NOTE: {
+    const newLane = { ...state[action.laneId] };
+    newLane.notes = newLane.notes.filter(noteId => noteId !== action.noteId);
+
+    return { ...state, [action.laneId]: newLane };
+  }
+
+  
 
   case MOVE_WITHIN_LANE: {
     const newLane = {...state[action.laneId] };

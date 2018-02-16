@@ -18,11 +18,14 @@ export const MOVE_BETWEEN_LANES = 'MOVE_BETWEEN_LANES';
 export const PUSH_TO_LANE = 'PUSH_TO_LANE';
 export const REMOVE_FROM_LANE = 'REMOVE_FROM_LANE';
 // Export Actions
+
 export function createLane(lane) {
   return {
     type: CREATE_LANE,
     lane: {
-      ...lane,
+    
+      notes: [],
+      ...lane
     }
   };
 }
@@ -87,15 +90,16 @@ export function createLanes(lanesData) {
   };
 }
 
-export function  fetchLanes() {
+export function fetchLanes() {
   return (dispatch) => {
     return callApi('lanes').then(res => {
       const normalized = normalize(res.lanes, lanes);
-      const {lanes: normalizedLanes, notes} = normalized.entities;
-      dispatch(createLanes(normalizedLanes));
-      dispatch(createNotes(notes))
-    })
-  }
+      const { lanes: normalizedLanes, notes } = normalized.entities;
+
+     dispatch(createLanes(normalizedLanes));
+     dispatch(createNotes(notes));
+    });
+  };
 }
 
 export function moveBetweenLanes(targetLaneId, noteId, sourceLaneId) {
