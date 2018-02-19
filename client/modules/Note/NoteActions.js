@@ -57,7 +57,7 @@ export function createNote(note, laneId) {
   }
   export function updateNoteRequest(note) {
     return (dispatch) => {
-      return callApi('notes','put', {id: note.id, task: note.task} ).then(noteResp => {
+      return callApi(`notes/${note.id}`,'put', {id: note.id, task: note.task} ).then(noteResp => {
         dispatch(updateNote(noteResp));
       });
     }

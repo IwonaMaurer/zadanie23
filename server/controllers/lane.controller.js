@@ -1,3 +1,5 @@
+import Lane from '../models/lane.js'
+
 export function addLane(req, res) {
   if (!req.body.name) {
     res.status(403).end();

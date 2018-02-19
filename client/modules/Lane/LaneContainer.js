@@ -4,6 +4,7 @@ import * as laneActions from './LaneActions';
 import { compose } from 'redux';
 import { DropTarget } from 'react-dnd';
 import ItemTypes from '../Kanban/itemTypes';
+import callApi from '../../util/apiCaller';
 
 import { updateLaneRequest, deleteLaneRequest, moveBetweenLanes, removeFromLane, pushToLane, changeLanesRequest } from "./LaneActions";
 import { createNote, createNoteRequest } from '../Note/NoteActions';
@@ -20,31 +21,27 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 
-
 const mapDispatchToProps = {
   ...laneActions,
+  addNote: createNoteRequest,
   updateLane: updateLaneRequest,
   deleteLane: deleteLaneRequest,
-  editLane,
-  addNote: createNoteRequest,
-  createLane: createLaneRequest,
   moveBetweenLanes,
   removeFromLane,
-  changeLanesRequest,
   pushToLane,
+  changeLanesRequest,
 };
-
 const noteTarget = {
   drop(targetProps, monitor) {
     const sourceProps = monitor.getItem();
-    const { id: noteId, laneId: sourceLaneId } = sourceProps;
+    const { id: noteId, laneId: sourceLaneId, _id: note_id } = sourceProps;
+
     if (targetProps.lane.id !== sourceLaneId) {
       targetProps.changeLanesRequest(sourceLaneId, targetProps.lane.id, noteId);
     }
 
   },
 }
-
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),

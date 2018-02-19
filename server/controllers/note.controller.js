@@ -58,10 +58,10 @@ export function deleteNote(req, res) {
 
 export function editNoteContent(req, res) {
   const note = req.body;
-    if(!note.id || !note.task) {
+    if(!req.params.noteId || !note.task) {
       res.status(403).end();
     }
-    Note.findOneAndUpdate({id: req.params.noteId}, note, {new: true}, (err, updated) => {
+    Note.findOneAndUpdate({id: req.params.noteId},  {task: note.task },  (err, updated) => {
       if(err) {
         res.status(500).send('error 500');
       }

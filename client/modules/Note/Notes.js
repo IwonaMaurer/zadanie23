@@ -18,7 +18,7 @@ const Notes = ({ notes, laneId, editNote, updateNote, deleteNote, moveWithinLane
         editing={note.editing}
         value={note.task}
         onValueClick={() => editNote(note.id)}
-        onUpdate={task => updateNote({
+        onEdit={noteName => updateNote({
           ...note,
           task,
           editing: false,
